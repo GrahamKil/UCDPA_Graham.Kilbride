@@ -1,15 +1,23 @@
 # Creating Project Repo
+import label as label
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+def importdata(filename):
+    data=pd.read_csv(filename)
+
+
 
 # importing CSV file
-import pandas as pd
-
 netflix_df = pd.read_csv('netflix_titles.csv', index_col='show_id')
 
 print(netflix_df.isna().sum())
 
 
+
 # removing coloum with the most missing values
 netflix_df1 = netflix_df.drop('director', axis=1)
+
 
 
 # dropping duplicates
@@ -18,12 +26,61 @@ netflix_df1.drop_duplicates()
 print(netflix_df1.isna().sum())
 
 
+
 # slicing a Movies and TV
-moives_tv = netflix_df1.loc[:, :'type']
+moives_tv = netflix_df1.loc[:, :'title']
 
 release_year = netflix_df1.loc[:, ['country','release_year','listed_in']]
 
-# Iterate through DataFrame
-for moives, type in netflix_df1.iterrows():
-    print(pd.value_counts(''))
 
+
+# Iterate through DataFrame
+for index, row in netflix_df.iterrows():
+    print(index, ': ', row['title'], 'has', row['duration'], 'duration.')
+
+from collections import Counter
+results = Counter()
+netflix_df1['type'].str.lower().str.split().apply(results.update)
+print(results)
+
+
+
+# merging two dataframes
+
+movies_tv_release_year = moives_tv.merge(release_year, on= 'show_id')
+
+
+
+# numpy
+viewing_time = netflix_df = pd.read_csv('netflix_titles.csv', index_col='show_id', nrows=9)
+print(viewing_time.head())
+
+viewing_time_array = viewing_time.values
+
+
+
+# Creating a Dictionary of countries and capital, key value pairs
+europe = { 'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }
+
+
+
+# Visualize
+
+import matplotlib.pyplot as plt
+
+def importdata(tv_shows):
+    data=pd.read_csv('tv_shows.csv')
+
+tv_shows_df = data=pd.read_csv('tv_shows.csv')
+
+x= tv_shows_df['Title']
+y= tv_shows_df['IMDb']
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(x, y, color='blue', linewidth=3)
+
+plt.xlabel('Show Title')
+plt.ylabel('IMDb Rating')
+
+plt.show()
