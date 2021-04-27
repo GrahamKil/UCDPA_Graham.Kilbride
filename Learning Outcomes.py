@@ -73,3 +73,20 @@ plt.ylabel('# of products shipped')
 plt.title('Transport Method Distribution')
 
 plt.show()
+
+
+
+
+fig, ax = plt.subplots()
+
+ax.bar(labels, men_means, width, yerr=men_std, label='Men')
+ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
+       label='Women')
+
+ax.set_ylabel('Scores')
+ax.set_title('Scores by group and gender')
+ax.legend()
+
+plt.show()
+
+plt.show()
