@@ -65,22 +65,11 @@ europe = { 'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'osl
 
 
 # Visualize
+ecomm = pd.read_csv('Train.csv')
 
-import matplotlib.pyplot as plt
-
-def importdata(tv_shows):
-    data=pd.read_csv('tv_shows.csv')
-
-tv_shows_df = data=pd.read_csv('tv_shows.csv')
-
-x= tv_shows_df['Title']
-y= tv_shows_df['IMDb']
-
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(x, y, color='blue', linewidth=3)
-
-plt.xlabel('Show Title')
-plt.ylabel('IMDb Rating')
+plt.hist(ecomm['Mode_of_Shipment'], color='purple', edgecolor='black')
+plt.xlabel('Transport Method')
+plt.ylabel('# of products shipped')
+plt.title('Transport Method Distribution')
 
 plt.show()
