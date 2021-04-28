@@ -85,3 +85,6 @@ value_by_warehouse.set_ylabel("Value of Stock Held")
 value_by_warehouse.set_title('Value of product shipped from each Warehouse')
 
 plt.show()
+
+
+# Visualization 3
