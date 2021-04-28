@@ -88,3 +88,21 @@ plt.show()
 
 
 # Visualization 3
+N = 10999
+x = ecomm['Discount_offered']
+y = ecomm['Cost_of_the_Product']
+colors = np.random.rand(N)
+area = np.pi*10
+
+plt.title("Discount Distribution of Purchases")
+plt.xlabel("Discount Offered")
+plt.ylabel("Cost of Product per hundred")
+
+plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+plt.show()
+
+
+# Visualization 4
+import seaborn as sns
+ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
+plt.show()
