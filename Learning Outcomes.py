@@ -65,6 +65,7 @@ europe = { 'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'osl
 
 
 # Visualize
+# Visualization 1
 ecomm = pd.read_csv('Train.csv')
 
 plt.hist(ecomm['Mode_of_Shipment'], color='purple', edgecolor='black')
@@ -75,18 +76,12 @@ plt.title('Transport Method Distribution')
 plt.show()
 
 
+# Visualization 2
+ecomm1 = ecomm[['Warehouse_block', 'Cost_of_the_Product']]
 
-
-fig, ax = plt.subplots()
-
-ax.bar(labels, men_means, width, yerr=men_std, label='Men')
-ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
-       label='Women')
-
-ax.set_ylabel('Scores')
-ax.set_title('Scores by group and gender')
-ax.legend()
-
-plt.show()
+value_by_warehouse = ecomm1.groupby("Warehouse_block").sum().plot(kind='bar')
+value_by_warehouse.set_xlabel("Warehouse Block")
+value_by_warehouse.set_ylabel("Value of Stock Held")
+value_by_warehouse.set_title('Value of product shipped from each Warehouse')
 
 plt.show()
