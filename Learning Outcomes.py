@@ -59,7 +59,7 @@ viewing_time_array = viewing_time.values
 
 
 
-# Creating a Dictionary of countries and capital, key value pairs
+# Creating a Dictionary of key value pairs
 europe = { 'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }
 
 
@@ -95,8 +95,8 @@ colors = np.random.rand(N)
 area = np.pi*10
 
 plt.title("Discount Distribution of Purchases")
-plt.xlabel("Discount Offered")
-plt.ylabel("Cost of Product per hundred")
+plt.xlabel("Discount Offered in %")
+plt.ylabel("Cost of Product per hundred in US Dollars")
 
 plt.scatter(x, y, s=area, c=colors, alpha=0.5)
 plt.show()
@@ -105,4 +105,12 @@ plt.show()
 # Visualization 4
 import seaborn as sns
 ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
+plt.show()
+
+
+
+
+# Visualization 5
+sns.scatterplot('Prior_purchases', 'Customer_rating', hue='Gender', data=ecomm);
+plt.title('Customer Ratting to Prior Purchases, Colored by Gender')
 plt.show()
