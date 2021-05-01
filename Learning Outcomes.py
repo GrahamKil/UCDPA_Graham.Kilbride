@@ -1,8 +1,13 @@
-# Creating Project Repo
-import label as label
+# UCD Data Project
+
+# Imprting packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from collections import Counter
+
+
+# Function
 def importdata(filename):
     data=pd.read_csv(filename)
 
@@ -15,7 +20,7 @@ print(netflix_df.isna().sum())
 
 
 
-# removing coloum with the most missing values
+# removing coloum with missing values
 netflix_df1 = netflix_df.drop('director', axis=1)
 
 
@@ -27,7 +32,7 @@ print(netflix_df1.isna().sum())
 
 
 
-# slicing a Movies and TV
+# slicing dataset - Movies and TV
 moives_tv = netflix_df1.loc[:, :'title']
 
 release_year = netflix_df1.loc[:, ['country','release_year','listed_in']]
@@ -38,7 +43,7 @@ release_year = netflix_df1.loc[:, ['country','release_year','listed_in']]
 for index, row in netflix_df.iterrows():
     print(index, ': ', row['title'], 'has', row['duration'], 'duration.')
 
-from collections import Counter
+
 results = Counter()
 netflix_df1['type'].str.lower().str.split().apply(results.update)
 print(results)
@@ -46,12 +51,11 @@ print(results)
 
 
 # merging two dataframes
-
 movies_tv_release_year = moives_tv.merge(release_year, on= 'show_id')
 
 
 
-# numpy
+# Using numpy
 viewing_time = netflix_df = pd.read_csv('netflix_titles.csv', index_col='show_id', nrows=9)
 print(viewing_time.head())
 
@@ -60,11 +64,27 @@ viewing_time_array = viewing_time.values
 
 
 # Creating a Dictionary of key value pairs
-europe = { 'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }
+europe = { 'spain': { 'capital':'madrid', 'population':46.77 },
+           'france': { 'capital':'paris', 'population':66.03 },
+           'germany': { 'capital':'berlin', 'population':80.62 },
+           'norway': { 'capital':'oslo', 'population':5.084 } }
+
+
+# Capital of France
+print(europe['france']['capital'])
+
+# Create sub-dictionary data
+data = {'population': 59.83, 'capital': 'rome'}
+
+# Add data to europe under key 'italy'
+europe['italy'] = data
+
+# Print europe
+print(europe)
 
 
 
-# Visualize
+## Visualize Data
 # Visualization 1
 ecomm = pd.read_csv('Train.csv')
 
@@ -76,6 +96,7 @@ plt.title('Transport Method Distribution')
 plt.show()
 
 
+
 # Visualization 2
 ecomm1 = ecomm[['Warehouse_block', 'Cost_of_the_Product']]
 
@@ -85,6 +106,7 @@ value_by_warehouse.set_ylabel("Value of Stock Held")
 value_by_warehouse.set_title('Value of product shipped from each Warehouse')
 
 plt.show()
+
 
 
 # Visualization 3
@@ -102,6 +124,7 @@ plt.scatter(x, y, s=area, c=colors, alpha=0.5)
 plt.show()
 
 
+
 # Visualization 4
 import seaborn as sns
 ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
@@ -109,8 +132,10 @@ plt.show()
 
 
 
-
 # Visualization 5
-sns.scatterplot('Prior_purchases', 'Customer_rating', hue='Gender', data=ecomm);
-plt.title('Customer Ratting to Prior Purchases, Colored by Gender')
+sns.set_theme(style="darkgrid")
+g = sns.jointplot(x="Customer_rating", y="Prior_purchases", data=ecomm,
+                  kind="reg", truncate=False,
+                  xlim=(0, 6), ylim=(0, 11),
+                  color="m", height=7)
 plt.show()
