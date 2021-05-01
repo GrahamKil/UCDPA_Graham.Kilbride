@@ -92,7 +92,6 @@ plt.hist(ecomm['Mode_of_Shipment'], color='purple', edgecolor='black')
 plt.xlabel('Transport Method')
 plt.ylabel('# of products shipped')
 plt.title('Transport Method Distribution')
-
 plt.show()
 
 
@@ -104,7 +103,6 @@ value_by_warehouse = ecomm1.groupby("Warehouse_block").sum().plot(kind='bar')
 value_by_warehouse.set_xlabel("Warehouse Block")
 value_by_warehouse.set_ylabel("Value of Stock Held")
 value_by_warehouse.set_title('Value of product shipped from each Warehouse')
-
 plt.show()
 
 
@@ -120,14 +118,12 @@ plt.title("Discount Distribution of Purchases")
 plt.xlabel("Discount Offered in %")
 plt.ylabel("Cost of Product per hundred in US Dollars")
 plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-
 plt.show()
 
 
 
 # Visualization 4
 ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
-
 plt.show()
 
 
