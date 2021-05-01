@@ -85,9 +85,10 @@ print(europe)
 ### Project Report
 ## Visualize Data for Project
 
-# Visualization 1
 ecomm = pd.read_csv('Train.csv')
+print(ecomm.isna().sum())
 
+# Visualization 1 - Transport Method Distribution
 plt.hist(ecomm['Mode_of_Shipment'], color='purple', edgecolor='black')
 plt.xlabel('Transport Method')
 plt.ylabel('# of products shipped')
@@ -96,7 +97,7 @@ plt.show()
 
 
 
-# Visualization 2
+# Visualization 2 - Value of product shipped from each Warehouse
 ecomm1 = ecomm[['Warehouse_block', 'Cost_of_the_Product']]
 
 value_by_warehouse = ecomm1.groupby("Warehouse_block").sum().plot(kind='bar')
@@ -107,7 +108,7 @@ plt.show()
 
 
 
-# Visualization 3
+# Visualization 3 - Discount Distribution of Purchases
 N = 10999
 x = ecomm['Discount_offered']
 y = ecomm['Cost_of_the_Product']
@@ -122,13 +123,13 @@ plt.show()
 
 
 
-# Visualization 4
+# Visualization 4 - Product Imprtance by Gender
 ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
 plt.show()
 
 
 
-# Visualization 5
+# Visualization 5 - Relationship between customer rating & repeat purchases
 sns.set_theme(style="darkgrid")
 g = sns.jointplot(x="Customer_rating", y="Prior_purchases", data=ecomm,
                   kind="reg", truncate=False,
