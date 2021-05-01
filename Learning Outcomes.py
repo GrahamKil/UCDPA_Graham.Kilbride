@@ -1,9 +1,10 @@
-# UCD Data Project
+### Learning Outcomes assessed:
 
 # Imprting packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from collections import Counter
 
 
@@ -81,7 +82,9 @@ print(europe)
 
 
 
-## Visualize Data
+### Project Report
+## Visualize Data for Project
+
 # Visualization 1
 ecomm = pd.read_csv('Train.csv')
 
@@ -123,7 +126,6 @@ plt.show()
 
 
 # Visualization 4
-import seaborn as sns
 ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
 
 plt.show()
