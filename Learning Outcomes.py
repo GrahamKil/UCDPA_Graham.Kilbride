@@ -69,17 +69,14 @@ europe = { 'spain': { 'capital':'madrid', 'population':46.77 },
            'germany': { 'capital':'berlin', 'population':80.62 },
            'norway': { 'capital':'oslo', 'population':5.084 } }
 
-
-# Capital of France
 print(europe['france']['capital'])
 
 # Create sub-dictionary data
 data = {'population': 59.83, 'capital': 'rome'}
 
-# Add data to europe under key 'italy'
+# Add data to europe under key
 europe['italy'] = data
 
-# Print europe
 print(europe)
 
 
@@ -119,8 +116,8 @@ area = np.pi*10
 plt.title("Discount Distribution of Purchases")
 plt.xlabel("Discount Offered in %")
 plt.ylabel("Cost of Product per hundred in US Dollars")
-
 plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+
 plt.show()
 
 
@@ -128,6 +125,7 @@ plt.show()
 # Visualization 4
 import seaborn as sns
 ax = sns.boxplot(x="Product_importance", y="Cost_of_the_Product", hue="Gender", data=ecomm, dodge=True)
+
 plt.show()
 
 
